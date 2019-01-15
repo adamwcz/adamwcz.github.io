@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <style>
 body {
@@ -16,18 +17,42 @@ div.fixed {
 }
 </style>
 </head>
+
 <body>
 
 <p>Here, the background image is repeated only vertically.</p>
 <a href = "https://www.smashbros.com/en_US/fighter/39.html">Test Link</a>
 <br><br><br><br>
-<iframe width="160" height="115" src="https://www.youtube.com/embed/bikxqlRPN64" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="160" height="1`15" src="https://www.youtube.com/embed/bikxqlRPN64" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </iframe>
 
 
+
+<div id="result"></div>
+<script>
+	// Check browser support
+	if (typeof(Storage) !== "undefined")
+	{
+		// Store
+		localStorage.setItem("lastname", "Smith");
+		// Retrieve
+ 		document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+	}
+	else
+	{
+		document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+	}
+</script>
+
+
+
+
+
+
 <div class="fixed">
-<img src="images/2002.png" alt="Italian Trulli">
+<img src="images/2002.png">
 </div>
 
 </body>
+
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body onload=OnLoad() bgcolor="lightgray">
+  <h1 align="center">Day of the Year</h1>
+  <br><hr><br>
+  <p align="center">Day Number <span style="font-size: 75%">(from 1 to <span id="itsMaxDays">344</span>): </span><input id="itsDayNumber" type="number" min="1" max="366" oninput=UpdateDay() style="width: 2.5em; height: 1em; font-size: 2em; text-align: center;"></p>
+  <p align="center" style="font-size:200%;" id="itsDayNumberText"></p>
+</body>
+</html>
+
+<script>
+  var itsDayNumberField = document.getElementById("itsDayNumber");
+  var itsDayNumberText = document.getElementById("itsDayNumberText");
+  var itsMaxDays = document.getElementById("itsMaxDays");
+  var aMaxDays = MaxDays(new Date().getFullYear());
+  function OnLoad()
+  {
+    itsMaxDays.textContent = aMaxDays;
+  }
+  function UpdateDay()
+  {
+    if (itsDayNumberField.value < 1)
+    {
+      itsDayNumberField.value = 1;
+    }
+    else 
+    {
+      
+      if (itsDayNumberField.value > aMaxDays)
+      {
+        itsDayNumberField.value = aMaxDays;
+      }
+    }
+
+    var aDate = new Date(2019, 0, itsDayNumberField.value);
+    var aDayName = aDate.toLocaleString('en-us', { weekday:'long' });
+    var aMonthName = aDate.toLocaleString('en-us', { month: 'long'});
+    var aDayNumber = aDate.toLocaleString('en-us', { day: 'numeric'});
+
+    itsDayNumberText.innerHTML = aDayName + ", " + aMonthName + " " + aDayNumber;
+  }
+  function IsLeapYear(year)
+  {
+    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+  }
+  function MaxDays(year)
+  {
+    return IsLeapYear(year) ? 366 : 365;
+  }
+</script>
